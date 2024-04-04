@@ -1,0 +1,3 @@
+/home/rc/osdev/MLFQ/cmake-build-debug/CMakeFiles/MLFQ.dir
+/home/rc/osdev/MLFQ/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/rc/osdev/MLFQ/cmake-build-debug/CMakeFiles/rebuild_cache.dir
