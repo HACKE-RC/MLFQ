@@ -1,24 +1,10 @@
-//#include "scheduler.hpp"
+#include "scheduler.hpp"
 #include <cstdio>
 #include <cstdlib>
 #include <random>
 #include <iostream>
 std::default_random_engine generator;
 
-enum priority{
-    LOW = 0,
-    MEDIUM = 1,
-    HIGH = 2
-};
-
-struct thread{
-    priority threadPriority;
-};
-
-struct threadList{
-    thread* threadInfo;
-    threadList* next;
-};
 
 int main(){
     thread threadL[10];
@@ -39,5 +25,7 @@ int main(){
     }
 
     list = listInit;
+    prioritySort(list);
+
 
 }
