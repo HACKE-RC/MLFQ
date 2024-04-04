@@ -1,18 +1,28 @@
 #include "scheduler.hpp"
 
 threadList* prioritySort(threadList* tList){
-    threadList* nextThread = tList->next;
-    threadList* currentThread = tList;
-    while(currentThread->next->threadInfo != nullptr){
-        while (tList->threadInfo != nullptr){
-            if (currentThread->threadInfo->threadPriority < tList->threadInfo->threadPriority){
-                thread *temp = tList->threadInfo;
-                tList->threadInfo = currentThread->threadInfo;
-                currentThread->threadInfo = temp;
-            }
-            tList = tList->next;
-        }
-        currentThread = currentThread->next;
+    if (tList == nullptr || tList->next == nullptr){
+        return tList;
     }
+
+    bool swapped;
+    threadList* currentThread;
+
+    do {
+        swapped = false;
+        currentThread = tList;
+
+        while (currentThread->next->threadInfo != nullptr) {
+            if (currentThread->threadInfo->threadPriority < currentThread->next->threadInfo->threadPriority) {
+                thread *temp = currentThread->threadInfo;
+                currentThread->threadInfo = currentThread->next->threadInfo;
+                currentThread->next->threadInfo = temp;
+                swapped = true;
+            }
+            currentThread = currentThread->next;
+        }
+    }
+    while (swapped);
+
     return tList;
 }
