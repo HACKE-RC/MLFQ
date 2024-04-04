@@ -1,7 +1,6 @@
 #ifndef MLFQ_SCHEDULER_HPP
 #define MLFQ_SCHEDULER_HPP
-
-
+#include "lib/lock.hpp"
 enum priority{
     LOW = 1,
     MEDIUM = 2,
@@ -18,4 +17,9 @@ struct threadList{
 };
 
 threadList* prioritySort(threadList* tList);
+int getProcessorCount();
+void runThreads(threadList* sortedList);
+void execute(thread* threadInfo, int processorNo, uint8_t quanta);
+int getQuanta(priority threadPriority);
+priority changePriority(priority currentPriority);
 #endif

@@ -25,7 +25,7 @@ int main(){
     }
 
     list = listInit;
-    prioritySort(list);
+    list = prioritySort(list);
 
 
 }
