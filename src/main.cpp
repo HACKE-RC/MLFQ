@@ -25,7 +25,5 @@ int main(){
     }
 
     list = listInit;
-    list = prioritySort(list);
-
-
+    runThreads(list);
 }

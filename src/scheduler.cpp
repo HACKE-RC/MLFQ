@@ -36,7 +36,7 @@ void runThreads(threadList* currentTList){
     int processorCount = getProcessorCount();
     thread *execThreadList[processorCount];
 
-    while(sortedList->threadInfo != nullptr && sortedList->next == nullptr){
+    while(sortedList->threadInfo != nullptr && sortedList->next != nullptr){
         for (int i = 0; i < processorCount; i++){
             execThreadList[i] = sortedList->threadInfo;
             sortedList = sortedList->next;
