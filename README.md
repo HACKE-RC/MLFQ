@@ -15,3 +15,6 @@ make
 ```
 
 The files are building can be found in the `build` directory.
+
+# Status
+Borderline incomplete, I may add more stuff later.
