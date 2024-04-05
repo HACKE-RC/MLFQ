@@ -18,7 +18,7 @@ struct threadList{
 
 threadList* prioritySort(threadList* tList);
 int getProcessorCount();
-void runThreads(threadList* sortedList);
+threadList* runThreads(threadList* sortedList);
 void execute(thread* threadInfo, int processorNo, uint8_t quanta);
 int getQuanta(priority threadPriority);
 priority changePriority(priority currentPriority);

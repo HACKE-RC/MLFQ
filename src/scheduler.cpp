@@ -28,27 +28,37 @@ threadList* prioritySort(threadList* tList){
     return tList;
 }
 
-
-void runThreads(threadList* currentTList){
-    threadList* sortedList = prioritySort(currentTList);
-
+threadList* runThreads(threadList* currentTList){
     lock(threadLock);
     int processorCount = getProcessorCount();
-    thread *execThreadList[processorCount];
+    auto *execThreadList = new thread*[processorCount];
+
+    int threadsScheduled = 0;
+
+    threadList* sortedList = prioritySort(currentTList);
+    threadList* sortedList2 = sortedList;
+    threadList* sortedList3 = sortedList;
 
     while(sortedList->threadInfo != nullptr && sortedList->next != nullptr){
-        for (int i = 0; i < processorCount; i++){
+        for (int i = 0; i < processorCount && sortedList->threadInfo != nullptr; i++){
             execThreadList[i] = sortedList->threadInfo;
             sortedList = sortedList->next;
         }
 
         for (int i = 0; i < processorCount; i++){
-            execute(execThreadList[i], i, getQuanta(execThreadList[i]->threadPriority));
-            execThreadList[i]->threadPriority = changePriority(execThreadList[i]->threadPriority);
+            if (execThreadList[i] != nullptr && sortedList2->threadInfo != nullptr){
+                execute(execThreadList[i], i, getQuanta(execThreadList[i]->threadPriority));
+                execThreadList[i]->threadPriority = changePriority(execThreadList[i]->threadPriority);
+                sortedList2->threadInfo->threadPriority = execThreadList[i]->threadPriority;
+                sortedList2 = sortedList2->next;
+                threadsScheduled++;
+            }
         }
     }
 
+    delete[] execThreadList;
     unlock(threadLock);
+    return sortedList3;
 }
 
 int getProcessorCount(){
