@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/MLFQ.dir/tests/tenthreads.cpp.o CMakeFiles/MLFQ.dir/src/scheduler.cpp.o CMakeFiles/MLFQ.dir/src/lib/lock.cpp.o -o build/MLFQ 

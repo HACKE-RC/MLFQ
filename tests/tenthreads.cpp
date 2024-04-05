@@ -1,10 +1,9 @@
-#include "scheduler.hpp"
-#include <cstdio>
+#include "../src/scheduler.hpp"
 #include <cstdlib>
 #include <random>
 #include <iostream>
-std::default_random_engine generator;
 
+std::default_random_engine generator;
 
 int main(){
     thread threadL[10];
@@ -25,5 +24,14 @@ int main(){
     }
 
     list = listInit;
-    runThreads(list);
+    list = runThreads(list);
+
+    std::cout << "\nThread Priority after updates: ";
+    std::cout << "\nHigh -> Low :: Low -> Medium :: Medium -> Low\n\n";
+    while (list->next != nullptr){
+        std::cout << "Thread priority: " << list->threadInfo->threadPriority << "\n";
+        list = list->next;
+    }
+
+    return 0;
 }

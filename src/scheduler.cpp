@@ -82,4 +82,5 @@ priority changePriority(priority currentPriority){
         case MEDIUM:
             return HIGH;
     }
+    return LOW;
 }
