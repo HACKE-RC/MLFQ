@@ -1,5 +1,5 @@
-# MLFQ
-This is a Multilevel Feedback Queue *based* scheduler implementation in C++. It does uses First-Come-First-Serve for simplicity and leaves the quanta checks to the impementer. 
+# SQMS
+This is a Single Queue Management System (SQMS) *based* scheduler implementation in C++. It does uses First-Come-First-Serve for simplicity and leaves the quanta checks to the impementer. 
 The execution of the threads is also left to the implementer using an empty function [execute](https://github.com/HACKE-RC/MLFQ/blob/3a94529557fd3fee67b7ee5c296c5b27d87a300e/src/scheduler.cpp#L69).
 
 The following function need to be implementer defined:
